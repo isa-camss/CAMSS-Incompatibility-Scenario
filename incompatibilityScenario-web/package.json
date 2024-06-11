@@ -1,0 +1,36 @@
+{
+    "name": "eui-angular-app",
+    "version": "17.1.1",
+    "license": "EUPL-1.1",
+    "scripts": {
+        "ng": "ng",
+        "start-mock-server": "nodemon --watch ./mock ./mock/server.js",
+        "start-serve": "eui-scripts serve-app --configuration=proxy-mock",
+        "start": "npm-run-all --parallel start-mock-server start-serve",
+        "dev": "ng serve --proxy-config proxy-local.conf.json",
+        "server": "ng serve --proxy-config proxy-server.conf.json",
+        "start-proxy": "eui-scripts serve-app --configuration=proxy",
+        "start-local": "eui-scripts serve-app",
+        "build": "eui-scripts build-app",
+        "build-dev": "eui-scripts build-app --configuration=development --configEnvTarget=dev",
+        "build-prod": "eui-scripts build-app --configuration=production-optimized --configEnvTarget=prod",
+        "build-prod-skip-test": "eui-scripts build-app --configuration=production-optimized --configEnvTarget=prod --skipTest",
+        "build-prod-stats": "eui-scripts build-app --configuration=production-optimized --configEnvTarget=prod --statsJson",
+        "app:build": "eui-scripts build-app",
+        "app:inject-config": "eui-scripts inject-config-app",
+        "generate-changelog": "eui-scripts generate-changelog"
+    },
+    "private": true,
+    "dependencies": {
+        "@eui/deps-base": "17.1.1",
+        "chart.js": "^4.4.1",
+        "export-from-json": "^1.7.4",
+        "jspdf": "^2.5.1",
+        "jspdf-autotable": "^3.8.2",
+        "lodash": "^4.17.21",
+        "pdfmake": "^0.2.10"
+    },
+    "devDependencies": {
+        "jasmine": "^5.1.0"
+    }
+}

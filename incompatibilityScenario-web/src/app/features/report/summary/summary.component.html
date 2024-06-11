@@ -1,0 +1,180 @@
+<eui-page >
+    <eui-page-header label="Incompatibility assessment results"></eui-page-header>
+
+    <eui-page-content class="eui-u-display-flex" style="align-items: center;">
+        <div class="row col-11 eui-u-mb-xl">
+            <app-progress-bar [currentStepName]="this.isComparingAssessments ? 'Assessment Comparison Results' : 'Assessment Results'"></app-progress-bar>
+        </div>
+        <div class="col-11">
+            <button euiButton euiSecondary (click)="onPreviousPressed()" class="eui-u-mb-m">
+                <eui-icon-svg icon="eui-arrow-back" set="eui" size="m" fillColor="grey-10" class="eui-u-mr-s"></eui-icon-svg>
+                Previous
+            </button>
+            <p>This section depicts the incompatibility assessment results of the specification <strong>{{newSpecification}}</strong>. The “Incompatibility” indicator measures the No Incompatibility or Incompatibility of the assessed specification <strong>{{newSpecification}}</strong> in regards to the applicable criteria.</p>
+        </div>
+        <div class="col-11">
+            <eui-card class="eui-u-display-flex eui-u-mb-s" *ngIf="this.isTable1Visible">
+                <eui-card-header>
+                    <eui-card-header-title>
+                        Assesment results
+                    </eui-card-header-title>
+                    <eui-card-header-right-content>
+                        <button *ngIf="!this.isTable2Visible" euiButton euiPrimary class="eui-u-mr-s" (click)="download(1)">Download JSON</button>
+                        <button euiButton euiPrimary (click)="exportPDFNewAssessment()" *ngIf="!this.isCompare">Download PDF</button>
+                        <button euiButton euiPrimary (click)="exportPDFCompare()" *ngIf="this.isCompare">Download PDF</button>
+                    </eui-card-header-right-content>
+                </eui-card-header>
+                <eui-card-content *ngIf="this.isTable1Visible">
+                    <div class="eui-u-flex eui-u-flex-justify-content-between eui-u-flex-wrap eui-u-mb-m" style="align-items: center;">
+                        <p>Assessment Outcome: <strong>{{globalResult1}}</strong></p>
+                        <button *ngIf="this.isTable2Visible" euiButton euiPrimary class="eui-u-mr-s" (click)="download(1)">Download JSON</button>
+                    </div>
+                    <div class="eui-table__scrollable-wrapper eui-u-flex" style="justify-content: center; align-items: center;">
+                        <table #myTable euiTable euiTableResponsive [rows]="dataSource1" >
+                            <ng-template euiTemplate="header">
+                                <tr>
+                                    <th class="eui-u-text-center">Category</th>
+                                    <th class="eui-u-text-center">Incompatibility result</th>
+                                    <th class="eui-u-text-center">Actions</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template let-row euiTemplate="body">
+                                <tr>
+                                    <td class="eui-u-text-center" data-col-label="Category">{{ row.category }}</td>
+                                    <td class="eui-u-text-center" data-col-label="Incompatibility result">{{ row.result }}</td>
+                                    <td class="eui-u-flex" data-col-label="Actions">
+                                        <div class="eui-u-flex" style="justify-content: center; align-items: center;">
+                                            <button euiButton euiBasicButton euiRounded euiIconButton euiPrimary euiSizeS euiTooltip="Edit" euiTooltipPrimary (click)="onRowEdit(row, 1)">
+                                                <eui-icon-svg icon="eui-pencil" aria-label="edit Icon"></eui-icon-svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </table>
+                    </div>
+                </eui-card-content>
+                <eui-card-content *ngIf="this.isTable2Visible">
+                    <div class="eui-u-flex eui-u-flex-justify-content-between eui-u-flex-wrap eui-u-mb-m" style="align-items: center;">
+                        <p style="margin: 0">The assessment {{ assessmentDescription2 }} is <strong>{{globalResult2}}</strong></p>
+                        <button euiButton euiPrimary class="eui-u-mr-s" (click)="download(2)">Download JSON</button>
+                    </div>
+                    <div class="eui-table__scrollable-wrapper eui-u-flex" style="justify-content: center; align-items: center;">
+                        <table #myTable euiTable euiTableResponsive [rows]="dataSource2">
+                            <ng-template euiTemplate="header">
+                                <tr>
+                                    <th class="eui-u-text-center">Category</th>
+                                    <th class="eui-u-text-center">Incompatibility result</th>
+                                    <th class="eui-u-text-center">Actions</th>
+                                </tr>
+                            </ng-template>
+                            <ng-template let-row euiTemplate="body">
+                                <tr>
+                                    <td class="eui-u-text-center" data-col-label="Category">{{ row.category }}</td>
+                                    <td class="eui-u-text-center" data-col-label="Incompatibility result">{{ row.result }}</td>
+                                    <td class="eui-u-flex" data-col-label="Actions">
+                                        <div class="eui-u-flex" style="justify-content: center; align-items: center;">
+                                            <button euiButton euiBasicButton euiRounded euiIconButton euiPrimary euiSizeS euiTooltip="Edit" euiTooltipPrimary (click)="onRowEdit(row, 2)">
+                                                <eui-icon-svg icon="eui-pencil" aria-label="edit Icon"></eui-icon-svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </table>
+                    </div>
+                </eui-card-content>
+            </eui-card>
+        </div>
+        <div class="col-11">
+            <eui-card >
+                <eui-card-header>
+                    <eui-card-header-title>
+                        Legend
+                    </eui-card-header-title>
+                    <eui-card-header-subtitle>
+                        '0' No selected, '1' Incompatible, '2' Considerably Incompatible, '3' Considerably Medium Incompatible, '4' Moderately Incompatible, '5' Medium-Slightly Incompatible, '6' Slightly Incompatible, '7' Not Incompatible
+                    </eui-card-header-subtitle>
+                </eui-card-header>
+                <eui-card-content>
+                    <div class="container" >
+                        <div class="col-6  offset-3" >
+                            <canvas id="MyChart"></canvas>
+                        </div>
+                    </div>
+                </eui-card-content>
+            </eui-card>
+        </div>
+    </eui-page-content>
+</eui-page>
+
+<eui-dialog #adjustementDialog
+    [title]="'Adjust incompatibility'"
+    acceptLabel="Confirm"
+    dismissLabel="Cancel"
+    (accept)="onConfirmNewResult()">
+    <p>
+        <strong>{{activeCategory}}</strong>
+    </p>
+    <p>If your organization has any exceptions that affect the incompatibility result, you can edit the result here:</p>
+    <p>Current answer: 
+        <eui-badge euiPrimary>{{effortResult}}</eui-badge>
+    </p>
+    <eui-progress-bar #progressBar
+        class="eui-u-mt-m"
+        label="Incompatibility Status"
+        [progress]="barProgress"
+        [euiVariant]="barVariant">
+    </eui-progress-bar>
+    <eui-feedback-message class="eui-u-mb-m"><strong>{{ currentResult?.resultString }}</strong></eui-feedback-message>
+    <div class="eui-u-flex eui-u-flex-justify-content-between eui-u-flex-wrap">
+        <label class="eui-u-mb-s">Please, add the justification of the adjustment here:</label>
+        <textarea class="eui-u-mb-s" #changeTextArea euiTextArea [(ngModel)]="textAreaValue" name="story" rows="3" cols="33" placeholder="Justify the change here..." [isInvalid]="textAreaValue.length === 0"></textarea>
+    </div>
+    <label class="eui-u-mb-s" [hidden]="textAreaValue.length === 0">Now, you are able to adjust the result:</label>
+    <div class="eui-u-flex eui-u-flex-justify-content-between eui-u-flex-wrap">
+        <p class="eui-u-mt-m" [hidden]="textAreaValue.length === 0">Ajusted result: 
+            <eui-badge euiPrimary>{{ currentResult?.resultString }}</eui-badge>
+        </p>
+        <eui-dropdown [hidden]="textAreaValue.length === 0">
+            <button euiButton euiPrimary>
+                Change result
+                <eui-icon-svg icon="eui-chevron-down" class="eui-u-ml-s"></eui-icon-svg>
+            </button>
+            <eui-dropdown-content>
+                <button euiDropdownItem (click)="updateResult('Not Incompatible')">
+                    <eui-icon-svg class="eui-u-mr-s" icon="eui-ecl-success" set="eui" size="m" fillColor="success-100"></eui-icon-svg>
+                    Not Incompatible
+                </button>
+                <button euiDropdownItem (click)="updateResult('Slightly Incompatible')">
+                    <eui-icon-svg class="eui-u-mr-s" icon="eui-ecl-success" set="eui" size="m" fillColor="success-100"></eui-icon-svg>
+                    Slightly Incompatible
+                </button>
+                <button euiDropdownItem (click)="updateResult('Moderately Low Incompatible')">
+                    <eui-icon-svg class="eui-u-mr-s" icon="eui-ecl-warning" set="eui" size="m" fillColor="warning-100"></eui-icon-svg>
+                    Moderately Low Incompatible
+                </button>
+                <button euiDropdownItem (click)="updateResult('Moderately Incompatible')">
+                    <eui-icon-svg class="eui-u-mr-s" icon="eui-ecl-warning" set="eui" size="m" fillColor="warning-100"></eui-icon-svg>
+                    Moderately Incompatible
+                </button>
+                <button euiDropdownItem (click)="updateResult('Considerably Medium Incompatible')">
+                    <eui-icon-svg class="eui-u-mr-s" icon="eui-ecl-warning" set="eui" size="m" fillColor="warning-100"></eui-icon-svg>
+                    Considerably Medium Incompatible
+                </button>
+                <button euiDropdownItem (click)="updateResult('Considerably Incompatible')">
+                    <eui-icon-svg class="eui-u-mr-s" icon="eui-ecl-close" set="eui" size="m" fillColor="danger-100"></eui-icon-svg>
+                    Considerably Incompatible
+                </button>
+                <button euiDropdownItem (click)="updateResult('Incompatible')">
+                    <eui-icon-svg class="eui-u-mr-s" icon="eui-ecl-close" set="eui" size="m" fillColor="danger-100"></eui-icon-svg>
+                    Incompatible
+                </button>
+                <button euiDropdownItem (click)="updateResult('No Selected')">
+                    <eui-icon-svg class="eui-u-mr-s" icon="eui-ecl-information" set="eui" size="m" fillColor="primary-100"></eui-icon-svg>
+                    No Selected
+                </button>
+            </eui-dropdown-content>
+        </eui-dropdown>
+    </div>
+</eui-dialog>

@@ -1,0 +1,66 @@
+<eui-page>
+    <!-- <eui-page-header label="Criteria"></eui-page-header> -->
+    <eui-page-content class="eui-u-display-flex" style="align-items: center;">
+        <div class="row col-11 eui-u-mb-xl">
+            <app-progress-bar [currentStepName]="'Assessment Criteria'"></app-progress-bar>
+        </div>
+        <div class="col-11">
+            <button euiButton euiSecondary class="eui-u-mb-m" (click)="previousComponent()">
+                <eui-icon-svg icon="eui-arrow-back" set="eui" size="m" fillColor="grey-10" class="eui-u-mr-s"></eui-icon-svg>
+                Previous
+            </button>
+            <p>This section presents a comprehensive questionnaire designed to assess the incompatibility or non-incompatible result of the new specification "<strong>{{newSpecification}}</strong>".</p>
+        </div>
+        <div class="col-11">
+            <div class="row" > <!--Botones-->
+                <div class="col-md-6 col-sm-12">
+                    <button euiButton class="eui-u-mr-s eui-u-mb-s" euiPrimary (click)="download()"> Save file </button>
+                </div>
+                <div class="col-md-6 col-sm-12 eui-u-text-right">
+                    <!-- <button euiButton class="eui-u-mr-xl eui-u-mb-s" euiPrimary (click)="previous()" [disabled]="disablePrevious"> Previous </button> -->
+                    <button euiButton #euiButtonNext *ngIf="this.isNextVisible" class="eui-u-ml-m eui-u-mb-s" euiPrimary (click)="next()"> Next </button>
+                    <button euiButton #euiButtonNext *ngIf="this.isFinishVisible" class="eui-u-ml-m eui-u-mb-s"  euiPrimary (click)="finish()" > Finish </button>
+                </div>
+            </div>
+
+            <eui-tabs #euiTabs (tabSelect)="onTabSelect($event)">
+                <eui-tab *ngFor="let title of titles">
+                    <eui-tab-label>{{title}}</eui-tab-label>
+                    <eui-tab-content>
+                        <div *ngFor="let question of questions[title]; let h=index">
+                            <app-criteria-details
+                                (parentEvent)="childEvent($event)"
+                                [questionText]="question.text"
+                                [exampleText]="examples[title][h].text"
+                                [questionId]="h"
+                                [title]="title">
+                            </app-criteria-details>
+                            <br/>
+                        </div>
+                    </eui-tab-content>
+                </eui-tab>
+            </eui-tabs>
+
+            <div class="row" > <!--Botones-->
+                <div class="col-md-6 col-sm-12">
+                    <button euiButton class="eui-u-mr-s eui-u-mb-s" euiPrimary (click)="download()"> Save file </button>
+                </div>
+                <div class="col-md-6 col-sm-12 eui-u-text-right">
+                    <button euiButton #euiButtonNext *ngIf="this.isNextVisible" class="eui-u-ml-m eui-u-mb-s" euiPrimary (click)="next()"> Next </button>
+                    <button euiButton #euiButtonNext *ngIf="this.isFinishVisible" class="eui-u-ml-m eui-u-mb-s"  euiPrimary (click)="finish()" > Finish </button>
+                </div>
+            </div>
+
+            <eui-dialog #dialog [title]="'Validation error'" [hasDismissButton]="false" acceptLabel="OK">
+                <p class="eui-u-text-paragraph">The assessment cannot be continued due to missing questions.</p>
+                <div *ngFor="let question of missingQuestions">
+                    <eui-alert *ngIf="question.disclaimer" euiAlertMuted euiWarning>Disclaimer: In an assessment impacts value only can be 'none' with effort value 'low'.</eui-alert>
+                    <p><strong>{{question.title}}</strong></p>
+                    <p>Question number: <strong>{{question.questionId + 1}}</strong></p>
+                    <p><strong>{{question.questionText}}</strong></p>
+                    <hr class="eui-u-mb-m" style="opacity: 0.5;"/>
+                </div>
+            </eui-dialog>
+        </div>
+    </eui-page-content>
+</eui-page>

@@ -1,0 +1,24 @@
+{
+    "yes": {
+        "low": {
+            "low": "Slightly Incompatible",
+            "medium": "Moderately Low Incompatible",
+            "high": "Incompatible",
+            "none": "Not Incompatible"
+        },
+        "medium": {
+            "low": "Moderately Low Incompatible",
+            "medium": "Moderately Incompatible",
+            "high": "Considerably Medium Incompatible",
+            "none": "ERROR"
+        },
+        "high": {
+            "low": "Considerably Medium Incompatible",
+            "medium": "Considerably Medium Incompatible",
+            "high": "Incompatible",
+            "none": "ERROR"
+        }
+    },
+    "no": "Not Incompatible",
+    "not applicable": "not applicable"
+}

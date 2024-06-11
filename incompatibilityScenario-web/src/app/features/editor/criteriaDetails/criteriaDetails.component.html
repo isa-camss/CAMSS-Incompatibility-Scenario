@@ -1,0 +1,102 @@
+<eui-card>
+    <eui-card-content>
+        <form [formGroup]="contactForm" novalidate>
+            <div class="container" >
+                <div class="row">
+                    <div class="col-12">
+                        <strong>
+                            <p>
+                                {{questionText}}
+                                <span class="eui-u-cursor-help" aria-haspopup="dialog">
+                                    <eui-icon-svg icon="eui-ecl-information" set="eui" size="s" fillColor="primary-100" (click)="openViewInformationModal(exampleText)"></eui-icon-svg>
+                                </span>
+                            </p>
+                        </strong>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col-12">
+                        <strong><p>Answer:</p></strong>
+                    </div>
+                </div> -->
+                <div euiInputGroup *ngFor="let answer of answers" class="eui-u-display-flex eui-u-mb-s">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="radio" euiInputRadio [id]="'answer'+answer.id" [value]="answer.name"
+                                name="answer" formControlName="answer"/>
+                            <label euiLabel [for]="answer.id"> {{answer.name}}</label>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-12">
+                        <strong><p>To what extent would the integration of the candidate specification be plug&play? </p></strong>
+                    </div>
+                </div>
+                <div euiInputGroup *ngFor="let effort of efforts" class="eui-u-display-flex eui-u-mb-s">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="radio" euiInputRadio [id]="'effort'+effort.id" [value]="effort.name"
+                            name="effort" formControlName="effort"/>
+                            <label euiLabel [for]="effort.id"> {{effort.name}}</label>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-12">
+                        <label euiLabel for="additional_effort">Additional information to the Effort
+                            estimation:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input euiInputText id="additional_effort" value="Type your answer here" formControlName="additionalEffort"/>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-12">
+                        <strong><p>To what extent would the integration of  the candidate specification impact on the existing components and processes in the RIE?</p></strong>
+                    </div>
+                </div>
+                <div  *ngFor="let impact of impacts; let i=index" class="eui-u-display-flex eui-u-mb-s">
+                    <div euiInputGroup >
+                        <div  class="row" >
+                            <div class="col-12"  >
+                                <input type="radio" euiInputRadio [id]="'impact'+impact.id" [value]="impact.name"
+                                 name="impact" formControlName="impact"/>
+                                <label euiLabel [for]="impact.id"> {{impact.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-12">
+                        <p></p>
+                        <label euiLabel for="additional_impact">Additional information to the Impacts:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input euiInputText id="additional_impact" value="Type youe answer here" formControlName="additionalImpact"/>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-12">
+                        <p></p>
+                        <label euiLabel for="additional_comments">Additional Comments:</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <input euiInputText id="additional_comments" value="Type youe answer here" formControlName="additionalComments"/>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </eui-card-content>
+</eui-card>

@@ -1,0 +1,9 @@
+{
+    "views" : [
+        { "name" : "Legal View" },
+        { "name" : "Organisational View" },
+        { "name" : "Semantic View" },
+        { "name" : "Technical-Application View" },
+        { "name" : "Technical-Infraestructure View" }
+    ]
+}

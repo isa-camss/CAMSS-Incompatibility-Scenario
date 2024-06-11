@@ -1,0 +1,32 @@
+<eui-progress-bar #progressBar
+    class="eui-u-mt-m"
+    euiSizeM
+    [progress]="currentStep.stepValue"
+    [euiVariant]="currentStep.stepVariant">
+</eui-progress-bar>
+
+<ng-container *ngIf="currentStep.stepString !== 'Assessment Comparison' && currentStep.stepString !== 'Assessment Comparison Results'">
+  <div class="eui-u-flex eui-u-flex-justify-content-between eui-u-flex-wrap eui-u-mb-m">
+    <ng-container *ngFor="let step of steps">
+      <p *ngIf="currentStep.stepString === step.step; else elseBlock" style="padding: 0; font-size: smaller;">
+          <strong>{{ step.step }}</strong>
+      </p>
+      <ng-template #elseBlock>
+        <p style="padding: 0; font-size: smaller; color: rgb(145, 145, 145)">{{ step.step }}</p>
+      </ng-template>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="currentStep.stepString === 'Assessment Comparison' || currentStep.stepString === 'Assessment Comparison Results'">
+    <div class="eui-u-flex eui-u-flex-justify-content-between eui-u-flex-wrap eui-u-mb-m">
+      <ng-container *ngFor="let step of compareSteps">
+        <p *ngIf="currentStep.stepString === step.step; else elseBlock" style="padding: 0; font-size: smaller;">
+            <strong>{{ step.step }}</strong>
+        </p>
+        <ng-template #elseBlock>
+          <p style="padding: 0; font-size: smaller; color: rgb(145, 145, 145)">{{ step.step }}</p>
+        </ng-template>
+      </ng-container>
+    </div>
+  </ng-container>

@@ -1,0 +1,120 @@
+<eui-page>
+
+    <eui-page-content class="eui-u-display-flex" style="align-items: center;">
+        <div class="row col-11 eui-u-mb-xl">
+            <app-progress-bar [currentStepName]="'Assessment Description'"></app-progress-bar>
+        </div>
+        <div class="col-11">
+            <button euiButton euiSecondary routerLink="/editor/information" class="eui-u-mb-m">
+                <eui-icon-svg icon="eui-arrow-back" set="eui" size="m" fillColor="grey-10" class="eui-u-mr-s"></eui-icon-svg>
+                Previous
+            </button>
+            <p>Please complete this section providing information for the performance of the incompatibility assessment.</p>
+        </div>
+        <div class="col-11">
+            <eui-card>
+                <eui-card-header>
+                    <eui-card-header-title>Start CAMSS Incompatibility Assessment</eui-card-header-title>
+                </eui-card-header>
+                <eui-card-content>
+                    <form [formGroup]="checkoutForm">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12" >
+                                    <p>The goal of the CAMSS incompatibility assessment is to determine whether integrating a specification/standard into an existing environment (AS-IS environment) could potentially disrupt the environment's interoperability with other solutions it exchanges data and information with. Typically, new specifications are integrated into the AS-IS Environment to implement new digital business capabilities or to adapt the environment to meet new interoperability requirements. The result of this integration is the TO-BE Environment (the desired target environment).</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" >
+                                    <div euiInputGroup>
+                                        <label euiLabel for="input_newCandidateSpecification"><strong>Candidate new specification</strong></label>
+                                        <input euiInputText id="newCandidateSpecification" value="Type your name here" formControlName="newCandidateSpecification" />
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" >
+                                    <div euiInputGroup>
+                                        <label euiLabel for="input_name"><strong>Assessment Justification *</strong></label>
+                                        <input euiInputText id="name" value="Type your name here" formControlName="assessmentDescription" required euiTooltip="A description of the need for this incompatibility assessment must be provided here."/>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" >
+                                    <div euiInputGroup>
+                                        <label euiLabel for="input_name"><strong>User name</strong></label>
+                                        <input euiInputText id="name" value="Type your name here" formControlName="name" />
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" >
+                                    <div euiInputGroup>
+                                        <label euiLabel for="input_organisation"><strong>Organisation</strong></label>
+                                        <input euiInputText id="organisation" value="Type your organisation here" formControlName="organisation" />
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" >
+                                    <div euiInputGroup>
+                                        <label euiLabel for="input_email"><strong>Email</strong></label>
+                                        <input euiInputText id="email" value="Type your email here" formControlName="email" />
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" >
+                                    <eui-alert euiAlertMuted euiWarning>Disclaimer: This application does not store any information you enter.</eui-alert>
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12" >
+                                    <p>Choose your assessment method:</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6" >
+                                    <div class="eui-u-flex eui-u-mb-s">
+                                        <input type="radio" euiInputRadio euiPrimary id="views" name="interoperability" value="views" formControlName="interoperability" checked>
+                                        <label euiLabel for="views" style="margin-left: 5px">LOST views</label>
+                                        <span class="eui-u-cursor-help" (click)="openWithService()"  aria-haspopup="dialog" style="margin-left: 5px">
+                                            <eui-icon-svg icon="eui-ecl-information" set="eui" size="s"></eui-icon-svg>
+                                        </span>
+                                    </div>
+                                    <div class="eui-u-flex eui-u-mb-s">
+                                        <input type="radio" euiInputRadio euiPrimary id="dimensions" name="interoperability" value="dimensions" formControlName="interoperability">
+                                        <label euiLabel for="dimensions" style="margin-left: 5px">Interoperability Dimensions</label>
+                                        <span class="eui-u-cursor-help" (click)="popUpInterDimensionsInfo()" aria-haspopup="dialog" style="margin-left: 5px">
+                                            <eui-icon-svg icon="eui-ecl-information" set="eui" size="s"></eui-icon-svg>
+                                        </span>
+                                    </div>
+                                    <eui-dialog #dialog
+                                        [title]="'Dialog title'">
+                                        Dialog content with <a href="www.google.com">link</a>
+                                    </eui-dialog>
+                                </div>
+                            </div>
+                            <eui-card-footer>
+                                <eui-card-footer-action-buttons>
+                                    <div class="eui-u-flex eui-u-flex-wrap eui-align-items-center eui-justify-content-center">
+                                        <button euiButton class="eui-u-mr-s eui-u-mb-s" euiPrimary [disabled]="checkoutForm.invalid" (click)="setData()"> Start </button> 
+                                        <!-- <button euiButton class="eui-u-mr-s eui-u-mb-s" euiInfo routerLink="/editor/selectDimensions"> Start D</button> -->
+                                        
+                                    </div>
+                                </eui-card-footer-action-buttons>
+                            </eui-card-footer>
+                        </div>
+                    </form>
+                </eui-card-content>
+            </eui-card>
+        </div>
+    </eui-page-content>
+</eui-page>

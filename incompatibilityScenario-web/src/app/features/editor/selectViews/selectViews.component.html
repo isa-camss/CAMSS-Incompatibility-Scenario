@@ -1,0 +1,57 @@
+<eui-page>
+    <eui-page-header label="Incompatibility Assessment Configuration"></eui-page-header>
+
+    <eui-page-content class="eui-u-display-flex" style="align-items: center;">
+        <div class="row col-11 eui-u-mb-xl">
+            <app-progress-bar [currentStepName]="'Assessment Configuration'"></app-progress-bar>
+        </div>
+        <div class="col-11">
+            <button euiButton euiSecondary routerLink="/editor/starting" class="eui-u-mb-m">
+                <eui-icon-svg icon="eui-arrow-back" set="eui" size="m" fillColor="grey-10" class="eui-u-mr-s"></eui-icon-svg>
+                Previous
+            </button>
+            <div class="container col-md-12">
+                <div class="row">
+                    <div class="col-12" >
+                        <eui-card>
+                            <eui-card-header>
+                                <eui-card-header-title>
+                                    Views selection
+                                </eui-card-header-title>
+                            </eui-card-header>
+                            <eui-card-content>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-6" >
+                                            <p>Please select the views that you want to assess</p>
+                                        </div>
+                                    </div>
+
+                                    <div *ngFor="let view of viewsList" style="display: flex; flex-direction: row;">
+                                        <input type="checkbox" euiInputCheckBox [id]="view.id" [value]="view.name" [(ngModel)]="view.checked"/>
+                                        <label euiLabel [for]="view.id" style="margin-right: 5px;"> {{view.name}}</label>
+                                        <span class="eui-u-cursor-help" aria-haspopup="dialog">
+                                            <eui-icon-svg icon="eui-ecl-information" set="eui" size="xs" fillColor="primary-100" (click)="openViewInformationModal(view)"></eui-icon-svg>
+                                        </span>
+                                    </div>
+
+                                    <br />
+                                    <eui-card-footer>
+                                        <eui-card-footer-action-buttons>
+                                            <div class="row">
+                                                <div class="col-6" >
+                                                    <button euiButton euiPrimary (click)="setData()" [disabled]="!checkViews()">Next</button>
+                                                </div>
+                                            </div>
+                                        </eui-card-footer-action-buttons>
+                                    </eui-card-footer>
+                                </div>
+                            </eui-card-content>
+                        </eui-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- </form> -->
+    </eui-page-content>
+</eui-page>

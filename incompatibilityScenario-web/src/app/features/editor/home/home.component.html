@@ -1,0 +1,46 @@
+<eui-page>
+    <!-- <eui-page-header label="CAMSS Incompatibility Scenario"></eui-page-header> -->
+
+    <eui-page-content class="eui-u-display-flex" style="align-items: center;">
+        <div class="row col-11 eui-u-mb-xl">
+            <app-progress-bar [currentStepName]="'Home'"></app-progress-bar>
+        </div>
+        <img src="../../../../assets/CAMSS Logo 2024.png" alt="Logo CAMSS" width="200" height="200">
+        <div class="row col-11">
+            <h3 style="padding: 0">What is CAMSS?</h3>
+            <p class="eui-u-mb-xl" style="padding: 0; text-align: justify;">CAMSS is the European guide for assessing and selecting standards and specifications for an eGovernment project, a reference when building an architecture and an enabler for justifying the choice of standards and specifications in terms of interoperability needs and requirements. It is fully aligned with the European Standardisation Regulation 1025/2012.</p>
+            <h3 style="padding: 0">What is the CAMSS Incompatibility Scenario: </h3>
+            <p style="padding: 0; text-align: justify;">The goal of the CAMSS incompatibility scenario is to check whether the integration of a specification/standard in an existing environment (an AS-IS environment) may somehow menace the interoperability of the environment with the solutions with which it exchanges data and information. The reasons to integrate new specifications in the AS-IS Environment are normally the implementation of new digital business capabilities or, in general, the adaptation of the existing AS-IS Environment to new interoperability requirements. The result of the integration can be named the TO-BE Environment (i.e., the desired target environment).</p>
+            <p class="eui-u-mt-xl" style="padding: 0">The incompatibility scenario allows us to assess the incompatibility level of specifications, but also to
+                compare different incompatibility assessments. Therefore, please indicate your option:</p>
+            <div class="row eui-u-mb-xl">
+                <eui-alert euiAlertMuted euiWarning>Disclaimer: The European Commission is not responsible for the content of questionnaires created using the CAMSS Incompatibility Scenario - it remains the sole responsibility of the form creator and manager. The use of the CAMSS Incompatibility Scenario does not imply a recommendation or endorsement, by the European Commission, of the views expressed within them.</eui-alert>
+                <br>
+            </div>
+            <eui-button-group isRadioButtons class="eui-u-mb-xl" style="padding: 0;">
+                <button euiButton euiPrimary class="eui-u-mr-s" id="1" routerLink="/editor/information"> New Incompatibility Assessment</button>
+                <button euiButton euiSecondary id="2" routerLink="/editor/compare"> Compare incompatibility assessments</button>
+            </eui-button-group>
+            <p style="padding: 0">Please select whether you want to start a new incompatibility assessment or to compare different incompatibility assessments already performed previously</p>
+            <eui-card>
+                <eui-card-header>
+                    <eui-card-header-title>Information</eui-card-header-title>
+                </eui-card-header>
+                <eui-card-content>
+                    <p>Before starting a new assessment, please read the following information:</p>
+                    <p>For users (assessors) to answer the questions effectively, the following recommendations are highly beneficial:</p>
+                    <ol>
+                        <li style="text-align: justify;">Thoroughly study the specification intended for integration into the SBB and AS-IS environments.</li>
+                        <li style="text-align: justify;">Verify the existence of a CSSV description for the specification. If unavailable, create a description using the CSSV as a guide.</li>
+                        <li style="text-align: justify;">Determine if the specification has undergone an EIF Scenario assessment. This assessment can provide valuable insights into the specification and how to address incompatibility questions.</li>
+                        <li style="text-align: justify;">Carefully read each question and analyze how integrating the specification might impact the aspects mentioned. If necessary, consult the Archimate EIRA model for definitions, interoperability saliency, and additional information. Consider the specification's characteristics and its alignment with the focal EIRA's ABB properties.</li>
+                        <li style="text-align: justify;">Recognize that the negative effects of a specification on an interoperability enabler can often be mitigated through adaptation, specialization, customization, or data/functionality transformation. In such cases, estimate the effort required to make the original specification compatible. Document how to overcome these gaps.</li>
+                        <li style="text-align: justify;">Acknowledge that incorporating the specification might offer positive aspects that further justify its integration. When this occurs, utilize the "additional comments" field to explain why the specification should be integrated (refer to the provided example).</li>
+                        <li style="text-align: justify;">Regardless of the answer to the first question (YES/NO/NOT APPLICABLE), provide additional details whenever possible, especially for "NOT APPLICABLE" answers.</li>
+                        <li style="text-align: justify;">Formulate a final recommendation, specifying whether or not the specification should be integrated.</li>
+                    </ol>
+                </eui-card-content>
+            </eui-card>
+        </div>
+    </eui-page-content>
+</eui-page>

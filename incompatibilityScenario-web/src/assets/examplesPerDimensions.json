@@ -1,0 +1,24 @@
+{
+    "Structural Interoperability Dimension" : [
+        "(*) Examples of incompatibility issues are conflicts with national and local regulations and specific compliance requirements involving legal consequences.",
+        "(*) Examples of incompatibility issues are differences in data formats, API incompatibility, authentication and authorisation issues, software version incompatibility, dependency conflicts, semantic interoperability issues, performance limitations, and infrastructure compatibility problems on the reuse of some of these aspects, avoiding the creation/implementation of certain elements for the creation/implementation of Digital Public Services solutions.",
+        "(*) Examples of incompatibility issues are semantic field divergence, constraint violations, or breaches of business rules related to the catalogue of ontologies, datasets, metadata, and reference data.",
+        "(*) Examples of incompatibility issues are differences in service discovery protocols, incompatibility of metadata standards, conflicts in service registration formats, variations in endpoint definitions, issues with synchronisation of service registries, lack of support for dynamic service updates, problems with interoperability of discovery algorithms, and performance discrepancies in real-time service discovery.",
+        "(*) Examples of incompatibility issues are API incompatibility, message exchange protocols conformance, user authentication mechanisms compatibility",
+        "(*) Examples of incompatibility issues are  lack of availability, performance, security, and scalability"
+    ],
+    "Behavieoural Interoperability Dimension" : [
+        "(*) Examples of incompatibility issues are conflicts with data protection regulations, discrepancies with national and cross-border legal requirements, issues with compliance to information exchange standards, legal constraints on data sharing agreements, differences in data retention policies, incompatibilities with privacy laws, restrictions due to intellectual property rights, and variations in regulatory compliance obligations.",
+        "(*) conflicts in service delivery standards, collaboration protocols, and regulatory frameworks, hindering harmonization and collaboration within the RIE implementing a Digital Public Service solution.",
+        "(*) Examples of incompatibility issues are ontology mismatches, metadata conflicts, vocabulary discrepancies, and ledger synchronization challenges within the RIE for a Digital Public Service Solution.",
+        "(*) Examples of incompatibility issues are lack of compatibility with assistive technologies, language support limitations, and slow performance, hindering accessibility within the Digital Public Service solution.",
+        "(*) Examples of incompatibility issues are difficulties in establishing network connections, enabling connections through communication protocols, and sharing information within the RIE for a Digital Public Service solution."
+    ],
+    "Governance Interoperability Dimension" : [
+        "(*) Examples of incompatibility issues are challenges aligning legal agreements across jurisdictions and negotiating new agreements within the RIE for a Digital Public Service solution.",
+        "(*) Examples of incompatibility issues are discrepancies in digital governance, challenges in risk and security management, and difficulties in facilitating exchanges between internal and external peers within the RIE for a Digital Public Service solution.",
+        "(*) Examples of incompatibility issues are discrepancies in interpreting business entities and attributes, challenges in applying data policies, constraints, and business rules within the RIE for implementing a Digital Public Service solution.",
+        "(*) Examples of incompatibility issues are trust and privacy enablement, raw data analysis challenges, conformance testing obstacles, data monitoring/control issues, and concerns about data quality/security within the RIE for a Digital Public Service solution.",
+        "(*) Examples of incompatibility issues are hurdles with remote desktops, VPN infrastructures, transmission systems, and user-controlled switching/routing equipment within the RIE for a Digital Public Service solution."
+    ]
+}

@@ -1,0 +1,157 @@
+<eui-page>
+    <!-- <eui-page-header label="Information"></eui-page-header> -->
+
+    <eui-page-content class="eui-u-display-flex" style="align-items: center;">
+        <div class="row col-11 eui-u-mb-xl">
+            <app-progress-bar [currentStepName]="'RIE Information'"></app-progress-bar>
+        </div>
+        <div class="col-11">
+            <button euiButton euiSecondary routerLink="/editor/home" class="eui-u-mb-m">
+                <eui-icon-svg icon="eui-arrow-back" set="eui" size="m" fillColor="grey-10" class="eui-u-mr-s"></eui-icon-svg>
+                Previous
+            </button>
+            <p>This section provides a comparative analysis of the 
+                <span class="eui-u-cursor-help" (click)="popUpSBBInfo()"  aria-haspopup="dialog" style="margin-left: 5px; color: blue">
+                Solution Building Blocks (SBB)
+            </span> between the existing environment and the new candidate environment. The SBBs are extracted from Archimate XML files, offering a detailed overview of the components and their relationships.</p>
+        </div>
+        <div class="col-11">
+            <div class="container col-md-12">
+                <div class="row">
+                    <div class="col-12" >
+                        <eui-card>
+                            <eui-card-header>
+                                <eui-card-header-title>
+                                    Information about the environment
+                                </eui-card-header-title>
+                                <eui-card-header-right-content>
+                                    <input #importInput hidden="true" onClick="this.value=null" (change)="uploadPreviousAssesment($event)" type="file" />
+                                    <button euiButton euiPrimary (click)="importInput.click()" euiTooltip="Import a file to continue with previous assesment with JSON format.">
+                                        Import Assessment
+                                    </button>
+                                </eui-card-header-right-content>
+                            </eui-card-header>
+                            <eui-card-content>
+                                <div class="row">
+                                    <p>Before starting the assessment of the specification, please use the following fields to describe your environment:
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <p>
+                                        <strong>Reference Interoperability Environment *:</strong>
+                                    </p>
+                                </div>
+                                <form [formGroup]="checkoutForm">
+                                    <div class="row">
+                                        <div class="col-12" >
+                                            <div euiInputGroup>
+                                                <label euiLabel for="rieName">Name of the Reference Interoperability Environment *</label>
+                                                <input euiInputText id="rieName" formControlName="rieName" value="" placeholder="Type your name here" required/>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12" >
+                                            <div euiInputGroup>
+                                                <label euiLabel for="rieDescription">Description of the Reference Interoperability Environment *</label>
+                                                <input euiInputText id="rieDescription" formControlName="rieDescription" value="" placeholder="Type your description here" required/>
+                                                <br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row" >
+                                    <p>
+                                        <strong>Current RIE with the existing specfications</strong> (This is the AS-IS envionment with the SBBs that conform it and the existing specifications)
+                                    </p>
+                                </div>
+                                <div class="row" >
+                                    <p>
+                                        Please click on the following button to provide your Reference Interoperability Environment in Archimate XML format:
+                                    </p>
+                                </div>
+                                
+                                <div class="row">
+                                    <div  class="col-2">
+                                        <input #rieInput hidden="true" onClick="this.value=null" (change)="changeRie($event)" type="file" />
+                                        <button euiButton class="eui-u-mr-s eui-u-mb-s" euiPrimary (click)="rieInput.click()">
+                                            Select file to upload
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div  class="col-12">
+                                        <table myTable1 euiTable euiTableResponsive [rows]="dataSource1" *ngIf="this.isTable1Visible">
+                                            <ng-template euiTemplate="header">
+                                                <tr>
+                                                    <th class="eui-u-text-center">SBB</th>
+                                                    <th class="eui-u-text-center">Existing specifications</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template let-row euiTemplate="body">
+                                                <tr>
+                                                    <td class="eui-u-text-center" data-col-label="SBB">{{ row.sbb }}</td>
+                                                    <td class="eui-u-text-center" data-col-label="Existing specifications">{{ row.specification }}</td>
+                                                </tr>
+                                            </ng-template>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br>
+
+                                <div class="row" *ngIf="this.isTable1Visible">
+                                    <p>
+                                        <strong>Candidate new specification:</strong>
+                                    </p>
+                                </div>
+                                <div class="row" *ngIf="this.isTable1Visible">
+                                    <p>
+                                        Please click on the following button to provide your Reference Interoperability Environment in Archimate XML format:
+                                    </p>
+                                </div>
+                                <div class="row" *ngIf="this.isTable1Visible">
+                                    <div  class=".col-2">
+                                        <input #candidateInput hidden="true" onClick="this.value=null" (change)="changeCandidate($event)" type="file" />
+                                        <button euiButton class="eui-u-mr-s eui-u-mb-s" euiPrimary (click)="candidateInput.click()">
+                                            Select file to upload
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div  class="col-12">
+                                        <table myTable2 euiTable euiTableResponsive [rows]="dataSource2" *ngIf="this.isTable2Visible">
+                                            <ng-template euiTemplate="header">
+                                                <tr>
+                                                    <th class="eui-u-text-center">SBB</th>
+                                                    <th class="eui-u-text-center">Existing specifications</th>
+                                                    <th class="eui-u-text-center">New candidate specification</th>
+                                                </tr>
+                                            </ng-template>
+                                            <ng-template let-row euiTemplate="body">
+                                                <tr>
+                                                    <td class="eui-u-text-center" data-col-label="SBB">{{ row.sbb }}</td>
+                                                    <td class="eui-u-text-center" data-col-label="Existing specifications">{{ row.specification }}</td>
+                                                    <td class="eui-u-text-center" data-col-label="Existing specifications">{{ row.newSpecification }}</td>
+                                                </tr>
+                                            </ng-template>
+                                        </table>
+                                    </div>
+                                </div>
+                                <br>
+
+
+                                <div class="row" *ngIf="this.isTable2Visible">
+                                    <div class="col-6">
+                                        <button euiButton class="eui-u-mr-s eui-u-mb-s" euiPrimary (click)="onSendForm()" [disabled]="checkoutForm.invalid">Next</button>
+                                    </div>
+                                </div>
+                            </eui-card-content>
+                        </eui-card>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </eui-page-content>
+</eui-page>

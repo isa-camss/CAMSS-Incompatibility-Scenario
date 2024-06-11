@@ -1,0 +1,7 @@
+{
+    "dimensions" : [
+        { "name" : "Structural Interoperability Dimension" },
+        { "name" : "Behavieoural Interoperability Dimension" },
+        { "name" : "Governance Interoperability Dimension" }
+    ]
+}

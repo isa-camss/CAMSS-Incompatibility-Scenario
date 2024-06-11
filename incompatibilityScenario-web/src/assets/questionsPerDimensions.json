@@ -1,0 +1,24 @@
+{
+    "Structural Interoperability Dimension" : [
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) regarding the legal basis for the implementation of a Digital Public Services solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) accessing or using a  Digital Public Services Catalogue implementing a Digital Public Service solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) with existing semantic rules or constraints implementing a Digital Public Service solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) regarding the dynamic discovery of services and components implementing a Digital Public Service solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) regarding the identification and access management of/to resources, data, and operations implementing a Digital Public Service solution? ",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) with the non-functional requirements of the hosting infrastructure implementing a Digital Public Service solution?"
+    ],
+    "Behavieoural Interoperability Dimension" : [
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) with the existing legal acts, notably the legislation on data information and knowledge exchange between public and private agents at national and cross-border levels, implementing a Digital Public Service solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) harmonising Digital Public Service delivery and promoting collaboration between administrations delivering a Digital Public Service?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) mapping ontologies, entities, metadata, controlled vocabularies, and/or using distributed ledgers implementing a Digital Public Service Solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) with the (re)usability and accessibility features implementing a Digital Public Service solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) with connectivity protocols or establishing network connections when implementing a Digital Public Service? "
+    ],
+    "Governance Interoperability Dimension" : [
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) with the legal agreements enabling the collaboration across jurisdictions, and the achievement of new agreements in the RIE implementing a Digital Public Service solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) with consensus on digital governance, risk & security management, and/or exchanges between internal/external peers implementing a Digital Public Service solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) on how to interpret business entities and/or attributes, or on how to apply data policies, constraints, and business rules implementing a Digital Public Service solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) with enabling trust and privacy, analyzing raw data for conclusions and decisions, conformance testing, data monitoring & control, and data quality & security implementing a Digital Public Service solution?",
+        "Is the integration of the candidate specification in the RIE causing incompatibility issues (*) with the use of remote desktops, VPN infrastructures, transmission systems, and/or the switching/routing of equipment by users from governance bodies/maintenance teams implementing a Digital Public Service solution?"
+    ]
+}

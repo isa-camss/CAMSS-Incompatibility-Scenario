@@ -1,0 +1,65 @@
+<eui-page>
+    <eui-page-content class="eui-u-display-flex" style="align-items: center;">
+        <div class="row col-11 eui-u-mb-xl">
+            <app-progress-bar [currentStepName]="'Assessment Comparison'"></app-progress-bar>
+        </div>
+        <div class="col-11">
+            <button euiButton euiSecondary routerLink="/editor/home" class="eui-u-mb-m">
+                <eui-icon-svg icon="eui-arrow-back" set="eui" size="m" fillColor="grey-10" class="eui-u-mr-s"></eui-icon-svg>
+                Previous
+            </button>
+            <eui-card>
+                <eui-card-header>
+                    <eui-card-header-title>
+                        Compare the assesment
+                    </eui-card-header-title>
+                </eui-card-header>
+                <eui-card-content>
+                    <div class="col-11">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>Please upload the JSON file with the first assessment to compare</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div  class="col-2">
+                                    <input #file1Input hidden="true" onClick="this.value=null" (change)="uploadFile1($event)" type="file" />
+                                    <button euiButton class="eui-u-mr-s eui-u-mb-s" euiPrimary (click)="file1Input.click()">
+                                        Select file 1 to upload
+                                    </button>
+                                </div>
+                                <div class="col-10" *ngIf="this.isFile1sucess">
+                                    <p>File upload sucess</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p>Please upload the JSON file with the second assessment to compare</p>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div  class="col-2">
+                                    <input #file2Input hidden="true" onClick="this.value=null" (change)="uploadFile2($event)" type="file" />
+                                    <button euiButton class="eui-u-mr-s eui-u-mb-s" euiPrimary (click)="file2Input.click()">
+                                        Select file 2 to upload
+                                    </button>
+                                </div>
+                                <div class="col-10" *ngIf="this.isFile2sucess">
+                                    <p>File upload sucess</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <eui-card-footer>
+                        <eui-card-footer-action-buttons>
+                            <div class="row" >
+                                <button euiButton [disabled]="isButtonDisabled" euiPrimary (click)="onNextPressed()">Next</button>
+                            </div>
+                        </eui-card-footer-action-buttons>
+                    </eui-card-footer>
+                </eui-card-content>
+            </eui-card>
+        </div>
+    </eui-page-content>
+</eui-page>

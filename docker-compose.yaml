@@ -1,0 +1,30 @@
+services:
+  incompatibilityscenario-rest:
+    image: incompatibilityscenario-rest
+    container_name: incompatibilityscenario-rest
+    build: 
+      context: ./incompatibilityScenario-rest/
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - incompatibilityscenario
+    restart: 
+      always
+  incompatibilityscenario-web:
+    image: incompatibilityscenario-web
+    container_name: incompatibilityscenario-web
+    build: 
+      context: ./incompatibilityScenario-web/
+      dockerfile: Dockerfile
+    ports:
+      - 4300:4300
+    depends_on:
+      - incompatibilityscenario-rest
+    networks:
+      - incompatibilityscenario
+    restart: 
+      always
+networks:
+  incompatibilityscenario:
+    external: true

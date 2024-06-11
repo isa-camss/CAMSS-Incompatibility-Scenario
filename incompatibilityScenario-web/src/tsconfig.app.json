@@ -1,0 +1,18 @@
+{
+    "extends": "../tsconfig.json",
+    "compilerOptions": {
+      "outDir": "../out-tsc/app",
+      "types": []
+    },
+    "angularCompilerOptions": {
+        "annotateForClosureCompiler": true,
+        "strictTemplates": true,
+        "strictInjectionParameters": true,
+    },
+    "exclude": [
+      "**/*.spec.ts",
+      "app/shared/testing/router.mock.ts",
+      "environments/environment.prod.ts",
+      "environments/environment.dev.ts"
+    ]
+  }
